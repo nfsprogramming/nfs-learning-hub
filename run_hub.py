@@ -9,8 +9,42 @@ PORT = 8080
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 class Handler(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=DIRECTORY, **kwargs)
+    def do_GET(self):
+        # We handle /firebase.js specifically to inject the API Key from the environment
+        if self.path == "/firebase.js" or self.path.endswith("firebase.js"):
+            try:
+                # Always read from the root firebase.js
+                file_path = os.path.join(DIRECTORY, "firebase.js")
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Try to get the key from .env or system environment
+                api_key = os.environ.get('FIREBASE_API_KEY')
+                if not api_key:
+                    # Fallback to reading .env file if it exists
+                    env_path = os.path.join(DIRECTORY, ".env")
+                    if os.path.exists(env_path):
+                        with open(env_path, 'r', encoding='utf-8') as ef:
+                            for line in ef:
+                                if line.startswith("FIREBASE_API_KEY="):
+                                    api_key = line.split("=")[1].strip()
+                                    break
+                
+                if api_key:
+                    # Replace the placeholder in the content
+                    content = content.replace("ENV_FIREBASE_API_KEY", api_key)
+                
+                self.send_response(200)
+                self.send_header("Content-type", "application/javascript")
+                self.end_headers()
+                self.wfile.write(content.encode('utf-8'))
+                return
+            except Exception as e:
+                print(f"Error serving firebase.js: {e}")
+                self.send_error(500, f"Internal Server Error during key injection: {e}")
+                return
+        
+        return super().do_GET()
 
 def start_server():
     with socketserver.TCPServer(("", PORT), Handler) as httpd:

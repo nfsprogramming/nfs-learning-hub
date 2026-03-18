@@ -2,21 +2,6 @@
 translations/
 translated_images/
 
-# ── Heavy image / media folders (Restored for Hub deployment) ────────────────
-# images/
-# img/
-# sketchnotes/
-# slides/
-# pdf/
-
-# ── Course-internal folders needed for some lessons ──────────────────────────
-# solutions/
-# start/
-# quiz-app/
-# examples/
-# etc/
-# data/
-
 # ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]

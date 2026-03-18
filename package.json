@@ -1,0 +1,7 @@
+{
+  "name": "nfs-learning-hub",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "sed -i \"s/ENV_FIREBASE_API_KEY/$FIREBASE_API_KEY/g\" firebase.js && echo 'Build Successful'"
+  }
+}

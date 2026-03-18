@@ -39,10 +39,10 @@ async function loadData() {
 function renderDashboard() {
     const grid = document.getElementById('lesson-grid');
     const sidebarNav = document.getElementById('sidebar-nav');
-    if (!grid || !sidebarNav) return;
+    if (!grid) return;
     
     grid.innerHTML = '';
-    sidebarNav.innerHTML = '';
+    if (sidebarNav) if (sidebarNav) if (sidebarNav) sidebarNav.innerHTML = '';
 
     courseData.forEach((section, sIdx) => {
         const navSection = document.createElement('div');
@@ -90,7 +90,7 @@ function renderDashboard() {
             `;
             grid.appendChild(card);
         });
-        sidebarNav.appendChild(navSection);
+        if (sidebarNav) if (sidebarNav) if (sidebarNav) sidebarNav.appendChild(navSection);
     });
 }
 
@@ -211,6 +211,22 @@ window.onload = () => {
     syncCourseBranding();
     loadData();
 };
+
+function openNotebook(lessonPath, notebookName, lessonId) {
+    // Construct the Colab link using the official Microsoft GitHub repo
+    // Format: https://colab.research.google.com/github/microsoft/ai-for-beginners/blob/main/[path]
+    const githubRepo = "microsoft/ai-for-beginners";
+    const branch = "main";
+    
+    // Ensure the path is correct (remove leading/trailing slashes if needed)
+    let cleanPath = lessonPath.startsWith('/') ? lessonPath.substring(1) : lessonPath;
+    const fullPath = `${cleanPath}/${notebookName}`;
+    
+    const colabUrl = `https://colab.research.google.com/github/${githubRepo}/blob/${branch}/${fullPath}`;
+    
+    // Open in new tab
+    window.open(colabUrl, '_blank');
+}
 
 
 

@@ -74,14 +74,89 @@ aside {
     z-index: 1000;
 }
 
-main {
-    margin-left: calc(var(--sidebar-width) + 40px);
-    flex: 1;
-    padding: 2rem 5%;
+/* App Layout - Full Width */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 100px;
 }
 
+/* Top Navbar Design */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 5%;
+    background: rgba(10, 11, 16, 0.8);
+    backdrop-filter: blur(40px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: #fff;
+}
+
+.top-nav .btn-hub {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: var(--transition);
+
+    margin: 0;
+}
+
+.btn-hub:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+main {
+    padding: 2rem 5%;
+    width: 100%;
+}
+
+
 /* Logo & Hub Link */
-.logo-container {
+/* Hidden Sidebar Styles */ .hidden-sidebar {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -117,12 +192,13 @@ main {
     overflow: hidden;
 }
 
-.btn-hub {
+.hidden-sidebar .btn-hub {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 10px 15px;
+    line-height: 1;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: 12px;

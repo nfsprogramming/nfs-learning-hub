@@ -21,18 +21,18 @@
 
     <nav class="navbar">
         <div class="logo">
-            <div class="logo-icon">NFS</div>
+            <img src="logo.png" alt="NFS Programming" style="height: 48px; border-radius: 8px; filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));">
             <div class="logo-text">Learning Hub</div>
         </div>
         <div class="nav-links">
             <a href="#" class="active">Courses</a>
-            <a href="#">Roadmaps</a>
-            <a href="#">Resources</a>
-            <a href="#">Community</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Roadmaps')">Roadmaps</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Resources')">Resources</a>
+            <a href="javascript:void(0)" onclick="showComingSoon('Community')">Community</a>
         </div>
         <div class="nav-actions">
             <button class="btn-glass"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <button class="btn-premium" onclick="openPremiumModal()">Premium Pro</button>
+            <button class="btn-gold" onclick="openPremiumModal()">Premium Pro</button>
         </div>
     </nav>
 
@@ -80,12 +80,11 @@
                     <p class="course-info">Covers: Python, pandas, visualization. Very beginner friendly.</p>
                     <div class="course-tag">20 Lessons</div>
                 </a>
-                <a href="AI-For-Beginners/index.html" class="course-card active">
+                <a href="AI-For-Beginners/index.html" class="course-card">
                     <div class="course-icon"><i class="fa-solid fa-brain"></i></div>
                     <h3 class="course-name">AI for Beginners</h3>
                     <p class="course-info">Covers: search, NLP, computer vision. 12-week structured course.</p>
                     <div class="course-tag">24 Lessons</div>
-                    <div class="status-badge">Completed</div>
                 </a>
             </div>
         </section>
@@ -281,6 +280,8 @@
 
         updateHubLessonCounts();
     </script>
+    <div id="toast-container"></div>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
 

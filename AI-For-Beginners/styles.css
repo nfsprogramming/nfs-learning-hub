@@ -58,34 +58,34 @@ body {
     100% { transform: translate(30px, 60px) scale(1); }
 }
 
-/* Sidebar Overlay Design */
-aside {
-    width: var(--sidebar-width);
-    height: calc(100vh - 40px);
-    margin: 20px;
-    background: rgba(10, 11, 16, 0.5);
-    backdrop-filter: blur(40px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+/* App Layout - Full Width */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 100px; /* Space for top-nav */
+}
+
+/* Top Navbar Design */
+.top-nav {
     position: fixed;
-    padding: 2rem 1.4rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 5%;
+    background: rgba(10, 11, 16, 0.8);
+    backdrop-filter: blur(40px);
+    border-bottom: 1px solid var(--glass-border);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     z-index: 1000;
 }
 
-main {
-    margin-left: calc(var(--sidebar-width) + 40px);
-    flex: 1;
-    padding: 2rem 5%;
-}
-
-/* Logo & Hub Link */
-.logo-container {
+.logo-group {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 2rem;
 }
 
 .logo-icon {
@@ -102,43 +102,43 @@ main {
 }
 
 .logo-text {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.5px;
-    background: linear-gradient(to right, #fff, #888);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    color: #fff;
 }
 
-.btn-hub {
+.top-nav .btn-hub {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    line-height: 1;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     color: #fff;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    margin-bottom: 2rem;
     transition: var(--transition);
+
+    margin: 0;
 }
 
 .btn-hub:hover {
     background: rgba(255, 255, 255, 0.1);
-    transform: translateX(-4px);
+    transform: translateY(-2px);
     border-color: var(--primary);
 }
+
+main {
+    padding: 2rem 5%;
+    width: 100%;
+}
+
+/* (Removed Sidebar Styles) */
 
 /* Sidebar Nav */
 #sidebar-nav {

@@ -39,10 +39,10 @@ async function loadData() {
 function renderDashboard() {
     const grid = document.getElementById('lesson-grid');
     const sidebarNav = document.getElementById('sidebar-nav');
-    if (!grid || !sidebarNav) return;
+    if (!grid) return;
     
     grid.innerHTML = '';
-    sidebarNav.innerHTML = '';
+    if (sidebarNav) if (sidebarNav) sidebarNav.innerHTML = '';
 
     courseData.forEach((section, sIdx) => {
         const navSection = document.createElement('div');
@@ -90,7 +90,7 @@ function renderDashboard() {
             `;
             grid.appendChild(card);
         });
-        sidebarNav.appendChild(navSection);
+        if (sidebarNav) if (sidebarNav) sidebarNav.appendChild(navSection);
     });
 }
 
@@ -214,3 +214,12 @@ window.onload = () => {
 
 
 
+
+function openNotebook(lessonPath, notebookName, lessonId) {
+    const githubRepo = "microsoft/ml-for-beginners";
+    const branch = "main";
+    let cleanPath = lessonPath.startsWith('/') ? lessonPath.substring(1) : lessonPath;
+    const fullPath = `${cleanPath}/${notebookName}`;
+    const colabUrl = `https://colab.research.google.com/github/${githubRepo}/blob/${branch}/${fullPath}`;
+    window.open(colabUrl, '_blank');
+}

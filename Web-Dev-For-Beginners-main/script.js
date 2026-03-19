@@ -1,3 +1,4 @@
+const baseCoursePath = "/Web-Dev-For-Beginners-main/";
 console.log("%c Microsoft Web Dev For Beginners | Official Microsoft Curriculum ", "background: #00f2ff; color: #0a0b10; font-weight: bold; padding: 4px; border-radius: 4px;");
 
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
@@ -20,7 +21,7 @@ const baseDir = scriptPath.substring(0, scriptPath.lastIndexOf('/') + 1);
 async function loadData() {
     try {
         // Fetch lessons_data.json relative to the course folder, adding timestamp to avoid aggressive caching
-        const response = await fetch(`lessons_data.json?v=${new Date().getTime()}`);
+        const response = await fetch(`/Web-Dev-For-Beginners-main/lessons_data.json?v=${new Date().getTime()}`);
         if (!response.ok) throw new Error('Data not found');
         courseData = await response.json();
         renderDashboard();
@@ -130,7 +131,7 @@ async function openReadme(path, isBackNavigation = false, isInitialRoute = false
 
         // Try local fetch first (relative to course folder)
         try {
-            const response = await fetch(`${fullPath}?v=${new Date().getTime()}`);
+            const response = await fetch(`${baseCoursePath}${fullPath}?v=${new Date().getTime()}`);
             if (response.ok) {
                 markdown = await response.text();
             }
